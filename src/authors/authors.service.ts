@@ -19,8 +19,8 @@ export class AuthorsService {
     return this.authorModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} author`;
+  findOne(id: string) {
+    return this.authorModel.findOne({ _id: id }).exec();
   }
 
   update(id: number, updateAuthorDto: UpdateAuthorDto) {
