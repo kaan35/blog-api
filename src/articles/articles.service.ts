@@ -27,7 +27,7 @@ export class ArticlesService {
     return `This action updates a #${id} article`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} article`;
+  async remove(id: string) {
+    return await this.articleModel.findByIdAndRemove({ _id: id }).exec();
   }
 }
