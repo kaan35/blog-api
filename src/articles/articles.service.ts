@@ -19,8 +19,8 @@ export class ArticlesService {
     return this.articleModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} article`;
+  findOne(id: string) {
+    return this.articleModel.findOne({ _id: id }).exec();
   }
 
   update(id: number, updateArticleDto: UpdateArticleDto) {
