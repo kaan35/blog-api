@@ -37,6 +37,6 @@ export class AuthorsController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.authorsService.remove(+id);
+    return this.authorsService.remove(id);
   }
 }

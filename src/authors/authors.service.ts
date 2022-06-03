@@ -27,7 +27,7 @@ export class AuthorsService {
     return `This action updates a #${id} author`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} author`;
+  async remove(id: string) {
+    return await this.authorModel.findByIdAndRemove({ _id: id }).exec();
   }
 }
