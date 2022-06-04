@@ -11,8 +11,8 @@ export class AuthorsService {
     @InjectModel(Author.name) private authorModel: Model<AuthorDocument>,
   ) {}
 
-  create(createAuthorDto: CreateAuthorDto) {
-    return 'This action adds a new author';
+  async create(createAuthorDto: CreateAuthorDto) {
+    return await this.authorModel.create(createAuthorDto);
   }
 
   findAll() {
