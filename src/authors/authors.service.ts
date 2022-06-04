@@ -23,8 +23,10 @@ export class AuthorsService {
     return this.authorModel.findOne({ _id: id }).exec();
   }
 
-  update(id: number, updateAuthorDto: UpdateAuthorDto) {
-    return `This action updates a #${id} author`;
+  async update(id: string, updateAuthorDto: UpdateAuthorDto) {
+    return await this.authorModel
+      .findByIdAndUpdate({ _id: id }, updateAuthorDto)
+      .exec();
   }
 
   async remove(id: string) {

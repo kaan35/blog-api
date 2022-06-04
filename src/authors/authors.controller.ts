@@ -32,7 +32,7 @@ export class AuthorsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAuthorDto: UpdateAuthorDto) {
-    return this.authorsService.update(+id, updateAuthorDto);
+    return this.authorsService.update(id, updateAuthorDto);
   }
 
   @Delete(':id')
