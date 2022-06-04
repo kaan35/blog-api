@@ -23,8 +23,10 @@ export class ArticlesService {
     return this.articleModel.findOne({ _id: id }).exec();
   }
 
-  update(id: number, updateArticleDto: UpdateArticleDto) {
-    return `This action updates a #${id} article`;
+  async update(id: string, updateArticleDto: UpdateArticleDto) {
+    return await this.articleModel
+      .findByIdAndUpdate({ _id: id }, updateArticleDto)
+      .exec();
   }
 
   async remove(id: string) {
