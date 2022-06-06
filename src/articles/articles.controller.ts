@@ -30,6 +30,11 @@ export class ArticlesController {
     return this.articlesService.findOne(id);
   }
 
+  @Get('latest/:limit')
+  findLatest(@Param('limit') limit: number) {
+    return this.articlesService.findLatest(limit);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
     return this.articlesService.update(id, updateArticleDto);

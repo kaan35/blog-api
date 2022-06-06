@@ -23,6 +23,10 @@ export class ArticlesService {
     return this.articleModel.findOne({ _id: id }).exec();
   }
 
+  findLatest(limit: number) {
+    return this.articleModel.find().sort({ _id: -1 }).limit(limit).exec();
+  }
+
   async update(id: string, updateArticleDto: UpdateArticleDto) {
     return await this.articleModel
       .findByIdAndUpdate({ _id: id }, updateArticleDto)
