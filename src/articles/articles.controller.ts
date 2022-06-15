@@ -25,14 +25,19 @@ export class ArticlesController {
     return this.articlesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.articlesService.findOne(id);
+  @Get('latest')
+  findLatest() {
+    return this.articlesService.findLatest();
   }
 
   @Get('latest/:limit')
-  findLatest(@Param('limit') limit: number) {
+  findLatestWithLimit(@Param('limit') limit: number) {
     return this.articlesService.findLatest(limit);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.articlesService.findOne(id);
   }
 
   @Patch(':id')
