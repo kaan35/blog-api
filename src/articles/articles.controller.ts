@@ -35,6 +35,11 @@ export class ArticlesController {
     return this.articlesService.findLatest(limit);
   }
 
+  @Get('detail/:slug')
+  findOneBySlug(@Param('slug') slug: string) {
+    return this.articlesService.findOneBySlug(slug);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.articlesService.findOne(id);

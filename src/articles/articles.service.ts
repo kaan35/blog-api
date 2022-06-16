@@ -23,6 +23,10 @@ export class ArticlesService {
     return this.articleModel.findOne({ _id: id }).exec();
   }
 
+  findOneBySlug(slug: string) {
+    return this.articleModel.findOne({ slug: slug }).exec();
+  }
+
   findLatest(limit?: number) {
     if (!(limit > 0)) limit = 5;
     return this.articleModel.find().sort({ _id: -1 }).limit(limit).exec();
