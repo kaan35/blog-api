@@ -25,6 +25,11 @@ export class ArticlesController {
     return this.articlesService.findAll();
   }
 
+  @Get('archive')
+  archive() {
+    return this.articlesService.archive();
+  }
+
   @Get('latest')
   findLatest() {
     return this.articlesService.findLatest();

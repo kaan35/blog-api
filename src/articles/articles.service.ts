@@ -32,6 +32,10 @@ export class ArticlesService {
     return this.articleModel.find().sort({ _id: -1 }).limit(limit).exec();
   }
 
+  archive() {
+    return this.articleModel.find().sort({ _id: -1 }).exec();
+  }
+
   async update(id: string, updateArticleDto: UpdateArticleDto) {
     return await this.articleModel
       .findByIdAndUpdate({ _id: id }, updateArticleDto)
