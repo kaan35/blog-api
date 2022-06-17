@@ -28,6 +28,18 @@ export class Article {
   ];
   @Prop()
   publishStatus: string;
+  @Prop()
+  publishDate: string;
+  @Prop()
+  publishDateTimeStamp: Date;
+  @Prop()
+  createDate: string;
+  @Prop()
+  createDateTimeStamp: Date;
+  @Prop()
+  updateDate: string;
+  @Prop()
+  updateDateTimeStamp: Date;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);
