@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { ArticlesModule } from './articles/articles.module';
 import { AuthorsModule } from './authors/authors.module';
 import { PagesModule } from './pages/pages.module';
+import { FormContactModule } from './form-contact/form-contact.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PagesModule } from './pages/pages.module';
     ArticlesModule,
     AuthorsModule,
     PagesModule,
+    FormContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],
