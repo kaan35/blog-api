@@ -1,6 +1,6 @@
 export class CreateFormContactDto {
   firstName: string;
   lastName: string;
-  email: number;
+  email: string;
   message: string;
 }

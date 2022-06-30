@@ -16,6 +16,10 @@ export class FormContactService {
   ) {}
 
   async create(data: CreateFormContactDto) {
+    data.firstName = data.firstName.trim();
+    data.lastName = data.lastName.trim();
+    data.email = data.email.trim();
+    data.message = data.message.trim();
     if (!data.firstName || !data.lastName || !data.email || !data.message) {
       return {
         message: 'Please fill the all required fields',
