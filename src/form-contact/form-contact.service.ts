@@ -7,12 +7,14 @@ import {
   Form_Contact_Message,
   FormContactMessageDocument,
 } from './schemas/form-contact-messages.schema';
+import { ValidateService } from '../utils/validate/validate.service';
 
 @Injectable()
 export class FormContactService {
   constructor(
     @InjectModel(Form_Contact_Message.name)
     private formContactModel: Model<FormContactMessageDocument>,
+    private validate: ValidateService,
   ) {}
 
   async create(data: CreateFormContactDto) {
@@ -23,6 +25,12 @@ export class FormContactService {
     if (!data.firstName || !data.lastName || !data.email || !data.message) {
       return {
         message: 'Please fill the all required fields',
+        status: 'error',
+      };
+    }
+    if (!this.validate.email(data.email)) {
+      return {
+        message: 'Email invalid',
         status: 'error',
       };
     }

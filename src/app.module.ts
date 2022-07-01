@@ -7,6 +7,7 @@ import { ArticlesModule } from './articles/articles.module';
 import { AuthorsModule } from './authors/authors.module';
 import { PagesModule } from './pages/pages.module';
 import { FormContactModule } from './form-contact/form-contact.module';
+import { ValidateService } from './utils/validate/validate.service';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { FormContactModule } from './form-contact/form-contact.module';
     FormContactModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ValidateService],
 })
 export class AppModule {}

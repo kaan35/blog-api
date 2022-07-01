@@ -6,6 +6,7 @@ import {
   Form_Contact_Message,
   FormContactMessageSchema,
 } from './schemas/form-contact-messages.schema';
+import { ValidateService } from '../utils/validate/validate.service';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import {
     ]),
   ],
   controllers: [FormContactController],
-  providers: [FormContactService],
+  providers: [FormContactService, ValidateService],
 })
 export class FormContactModule {}
