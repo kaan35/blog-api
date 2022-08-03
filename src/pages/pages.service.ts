@@ -16,7 +16,7 @@ export class PagesService {
   }
 
   findAll() {
-    return `This action returns all pages`;
+    return this.pagesModel.find().exec();
   }
 
   findOneBySlug(slug: string) {
