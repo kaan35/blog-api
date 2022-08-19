@@ -23,8 +23,8 @@ export class PagesService {
     return this.pagesModel.findOne({ slug: slug }).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} page`;
+  findOne(id: string) {
+    return this.pagesModel.findOne({ _id: id }).exec();
   }
 
   update(id: number, updatePageDto: UpdatePageDto) {

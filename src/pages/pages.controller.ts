@@ -32,7 +32,7 @@ export class PagesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.pagesService.findOne(+id);
+    return this.pagesService.findOne(id);
   }
 
   @Patch(':id')
