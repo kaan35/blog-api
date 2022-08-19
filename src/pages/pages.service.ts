@@ -27,8 +27,24 @@ export class PagesService {
     return this.pagesModel.findOne({ _id: id }).exec();
   }
 
-  update(id: number, updatePageDto: UpdatePageDto) {
-    return `This action updates a #${id} page`;
+  async update(id: string, data: UpdatePageDto) {
+    let response;
+    await this.pagesModel
+      .findByIdAndUpdate({ _id: id }, data)
+      .exec()
+      .then(() => {
+        response = {
+          status: 'success',
+          message: 'Page updated successfully',
+        };
+      })
+      .catch(() => {
+        response = {
+          status: 'error',
+          message: 'An error occurred to update page',
+        };
+      });
+    return response;
   }
 
   remove(id: number) {

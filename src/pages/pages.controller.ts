@@ -37,7 +37,7 @@ export class PagesController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePageDto: UpdatePageDto) {
-    return this.pagesService.update(+id, updatePageDto);
+    return this.pagesService.update(id, updatePageDto);
   }
 
   @Delete(':id')
