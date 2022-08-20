@@ -4,11 +4,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { UpdatePageDto } from './dto/update-page.dto';
 import { Page, PagesDocument } from './schemas/pages.schema';
+import { DateService } from '../utils/date/date.service';
 
 @Injectable()
 export class PagesService {
   constructor(
     @InjectModel(Page.name) private pagesModel: Model<PagesDocument>,
+    private date: DateService,
   ) {}
 
   create(createPageDto: CreatePageDto) {
@@ -29,6 +31,9 @@ export class PagesService {
 
   async update(id: string, data: UpdatePageDto) {
     let response;
+    data.updateDate = this.date.currentDate();
+    data.updateDateTime = this.date.currentDateTime();
+    data.updateDateTimeStamp = this.date.currentDateTimeStamp();
     await this.pagesModel
       .findByIdAndUpdate({ _id: id }, data)
       .exec()
@@ -36,6 +41,7 @@ export class PagesService {
         response = {
           status: 'success',
           message: 'Page updated successfully',
+          data: data,
         };
       })
       .catch(() => {

@@ -15,15 +15,19 @@ export class Page {
   @Prop()
   publishDate: string;
   @Prop()
-  publishDateTimeStamp: Date;
+  publishDateTimeStamp: string;
   @Prop()
   createDate: string;
   @Prop()
-  createDateTimeStamp: Date;
+  createDateTime: string;
+  @Prop()
+  createDateTimeStamp: string;
   @Prop()
   updateDate: string;
   @Prop()
-  updateDateTimeStamp: Date;
+  updateDateTime: string;
+  @Prop()
+  updateDateTimeStamp: string;
 }
 
 export const PagesSchema = SchemaFactory.createForClass(Page);
