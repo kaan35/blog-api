@@ -8,6 +8,7 @@ import { AuthorsModule } from './authors/authors.module';
 import { PagesModule } from './pages/pages.module';
 import { FormContactModule } from './form-contact/form-contact.module';
 import { ValidateService } from './utils/validate/validate.service';
+import { DateService } from './utils/date/date.service';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import { ValidateService } from './utils/validate/validate.service';
     FormContactModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ValidateService],
+  providers: [AppService, ValidateService, DateService],
 })
 export class AppModule {}
