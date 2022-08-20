@@ -53,7 +53,23 @@ export class PagesService {
     return response;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} page`;
+  async remove(id: string) {
+    let response;
+    await this.pagesModel
+      .findByIdAndRemove({ _id: id })
+      .exec()
+      .then(() => {
+        response = {
+          status: 'success',
+          message: 'Page delete successfully',
+        };
+      })
+      .catch(() => {
+        response = {
+          status: 'error',
+          message: 'An error occurred to remove page',
+        };
+      });
+    return response;
   }
 }
