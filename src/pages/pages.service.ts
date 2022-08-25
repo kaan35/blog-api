@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePageDto } from './dto/create-page.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UpdatePageDto } from './dto/update-page.dto';
 import { Page, PagesDocument } from './schemas/pages.schema';
 import { DateService } from '../utils/date/date.service';
+import { CreatePageDto } from './dto/create-page.dto';
+import { UpdatePageDto } from './dto/update-page.dto';
 
 @Injectable()
 export class PagesService {
@@ -13,8 +13,27 @@ export class PagesService {
     private date: DateService,
   ) {}
 
-  create(createPageDto: CreatePageDto) {
-    return 'This action adds a new page';
+  async create(data: CreatePageDto) {
+    let response;
+    data.createDate = this.date.currentDate();
+    data.createDateTime = this.date.currentDateTime();
+    data.createDateTimeStamp = this.date.currentDateTimeStamp();
+    await this.pagesModel
+      .create(data)
+      .then((content) => {
+        response = {
+          status: 'success',
+          message: 'Page created successfully',
+          data: content,
+        };
+      })
+      .catch(() => {
+        response = {
+          status: 'error',
+          message: 'An error occurred to create page',
+        };
+      });
+    return response;
   }
 
   findAll() {
@@ -37,11 +56,11 @@ export class PagesService {
     await this.pagesModel
       .findByIdAndUpdate({ _id: id }, data)
       .exec()
-      .then(() => {
+      .then((content) => {
         response = {
           status: 'success',
           message: 'Page updated successfully',
-          data: data,
+          data: content,
         };
       })
       .catch(() => {
