@@ -54,13 +54,13 @@ export class PagesService {
     data.updateDateTime = this.date.currentDateTime();
     data.updateDateTimeStamp = this.date.currentDateTimeStamp();
     await this.pagesModel
-      .findByIdAndUpdate({ _id: id }, data)
+      .findByIdAndUpdate({ _id: id }, data, { new: true })
       .exec()
       .then((content) => {
         response = {
-          status: 'success',
-          message: 'Page updated successfully',
           data: content,
+          message: 'Page updated successfully',
+          status: 'success',
         };
       })
       .catch(() => {
